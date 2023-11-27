@@ -17,10 +17,10 @@ jobs:
       run: sudo apt-get install texlive-xetex
 
     - name: Compile LaTeX to PDF
-      run: xelatex -interaction=nonstopmode -halt-on-error EssentialStatistics/book.tex
+      run: xelatex -interaction=nonstopmode -halt-on-error book.tex
 
     - name: Upload PDF
       uses: actions/upload-artifact@v2
       with:
         name: pdf
-        path: EssentialStatistics/book.pdf
+        path: book.pdf

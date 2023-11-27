@@ -6,13 +6,13 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'doc.tex'
+      - 'book.tex'
       #- 'pdfjs/**'
       - '.github/workflows/blank.yml'
   pull_request:
     branches: [ main ]
     paths:
-      - 'doc.tex'
+      - 'book.tex'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -39,5 +39,5 @@ jobs:
         env:
           REPO: self
           BRANCH: gh-pages
-          #FOLDER: pdfjs
+          FOLDER: EssentialStatistics
          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

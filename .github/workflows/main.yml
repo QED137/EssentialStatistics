@@ -17,13 +17,12 @@ jobs:
         with:
           root_file: EssentialStatistics/book.tex
 
-      - name: Copy file
-        run: |
-          mv EssentialStatistics/book.pdf .
+      - name: Copy PDF file to root
+        run: mv EssentialStatistics/book.pdf .
 
       - name: Deploy to gh-pages
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: self
           BRANCH: gh-pages
-          FOLDER: EssentialStatistics
+          FOLDER: .

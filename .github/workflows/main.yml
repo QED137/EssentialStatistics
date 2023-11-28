@@ -1,23 +1,17 @@
-name: LaTeX to PDF
-
-on:
-  push:
-    branches:
-      - main
-
+name: Build LaTeX document
+on: [push]
 jobs:
   build_latex:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Compile LaTeX to PDF
-      run: xelatex -interaction=nonstopmode -halt-on-error book.tex
-
-    - name: Upload PDF
-      uses: actions/upload-artifact@v2
-      with:
-        name: pdf
-        path: EssentialStatistics/book.pdf
+      - name: Set up Git repository
+        uses: actions/checkout@v3
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: book.tex
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v3
+        with:
+          name: PDF
+          path: book.pdf

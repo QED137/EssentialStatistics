@@ -15,7 +15,7 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: EssentialStatistics/book.tex
+          root_file: book.tex
 
       - name: Upload PDF file
         uses: actions/upload-artifact@v3

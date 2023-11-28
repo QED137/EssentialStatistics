@@ -1,6 +1,4 @@
-# LaTeX to PDF Conversion with GitHub Actions
 
-This repository includes an automated workflow that converts a LaTeX document to a PDF using GitHub Actions. The workflow is triggered on each push to the main branch, ensuring that the PDF is always up-to-date with the latest changes to the LaTeX document.
 
 ## Essential Statistics for Data Science
 
@@ -41,6 +39,9 @@ The workflow consists of the following steps:
 3. **Upload PDF file**: The compiled PDF file is uploaded as an artifact, making it accessible for further use or manual download.
 
 ## Usage
+## LaTeX to PDF Conversion with GitHub Actions
+
+This repository includes an automated workflow that converts a LaTeX document to a PDF using GitHub Actions. The workflow is triggered on each push to the main branch, ensuring that the PDF is always up-to-date with the latest changes to the LaTeX document.
 
 To compile the LaTeX document and generate the PDF locally, you can follow these steps:
 

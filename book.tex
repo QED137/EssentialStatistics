@@ -992,6 +992,101 @@ An interval estimate of $\sigma^2$ can be established by using the statistic $X^
 }
 \end{center}
 \subsubsection{Maximum Likelihood Method}
+Another method for estimating parameters in a population distribution is called Maximum Likelihood Estimation (MLE). Maximum Likelihood Estimation is like finding the parameter$\theta$ that makes our observed data most probable or likely according to our chosen distribution model. It's a powerful tool in statistics for making informed estimates about underlying population characteristics.
+The idea is to let $f(x_1, \ldots, x_n | \theta)$ denote the joint probability mass function of the random variables $X_1, X_2, \ldots, X_n$ when they are discrete, and let it be their joint probability density function when they are jointly continuous random variables. The value of $\theta$ for which this function reaches its maximum is the estimated parameter.
+
+\begin{equation}\label{mle1}
+ \textbf{Likelihood Function (L):} \quad f(x_1, \ldots, x_n | \theta)= P\{X_1=x_1, X_2=x_2 \dots | \theta\}
+\end{equation}
+ Given a statistical model with parameters $\theta$ and observed data $x$, the likelihood function $L(\theta | x)$ measures how likely the observed data is for different values of the parameters. For a set of independent and identically distributed (i.i.d.) observations, the likelihood function is the product of the individual likelihoods:
+
+\[ L(\theta | x) = f(x_1 | \theta) \cdot f(x_2 | \theta) \cdot \ldots \cdot f(x_n | \theta) \]
+
+Here, $f(x_i | \theta)$ is the probability density function (PDF) or probability mass function (PMF) of the model for the $i$-th observation.
+
+To find the best estimate, we maximize the likelihood function for the parameter $\theta$ value:
+\begin{equation}\label{mle2}
+ \frac{\partial L(\theta | x)}{\partial \theta} \bigg|_{\theta = \theta_{\text{max}}} =0
+\end{equation}
+
+Due to mathematical convenience (simplifying products into sums), it's common to work with the log-likelihood function:
+\begin{equation}\label{mle3}
+ l(\theta|x)=\log L(\theta | x)
+\end{equation}
+then equation(\ref{mle2}) will be read as 
+\begin{equation}
+    \frac{\partial l(\theta |x)}{d\theta}\bigg|_{\theta=\theta_{\text{max}}}=0
+\end{equation}
+The equation (\ref{mle2}) is known as  \textbf{Maximum Likelihood Estimation (MLE)}. It can be  expressed as:
+
+\[ \hat{\theta} = \text{argmax}_{\theta} L(\theta | x) \]
+
+or
+
+\[ \hat{\theta} = \text{argmax}_{\theta} \ell(\theta | x) \]
+
+\begin{example}{\textbf{Estimating Poisson Parameter}}
+    In the case of independent Poisson random variables, each with the same mean $\lambda$, the probability mass function (PMF) of a Poisson random variable is given by:
+
+\[ P(X_i=k) = \frac{e^{-\lambda} \lambda^k}{k!} \]
+
+Now, let's denote the observed values as $x_1, x_2, \ldots, x_n$. The likelihood function for the sample is the product of the individual PMFs:
+
+\[ L(\lambda) = P(X_1=x_1) \cdot P(X_2=x_2) \cdot \ldots \cdot P(X_n=x_n) \]
+
+Taking the product and simplifying it, we get:
+
+\[ L(\lambda) = \frac{e^{-n\lambda} \lambda^{\sum_{i=1}^{n} x_i}}{\prod_{i=1}^{n} x_i!} \]
+
+To find the maximum likelihood estimator (MLE) of $\lambda$, we seek the value of $\lambda$ that maximizes this likelihood function. Taking the logarithm of the likelihood function (log-likelihood) often simplifies the optimization:
+
+\[ \ell(\lambda) = -n\lambda + \sum_{i=1}^{n} x_i \log(\lambda) - \sum_{i=1}^{n} \log(x_i!) \]
+
+To find the MLE, set the derivative of the log-likelihood with respect to $\lambda$ equal to zero:
+
+\[ \frac{\partial \ell(\lambda)}{\partial \lambda} = -n + \frac{\sum_{i=1}^{n} x_i}{\lambda} = 0 \]
+
+Solving for $\lambda$, we get:
+
+\[ \hat{\lambda}_{\text{MLE}} = \frac{\sum_{i=1}^{n} x_i}{n} \]
+
+Therefore, the maximum likelihood estimator of $\lambda$ for a sample of independent Poisson-distributed random variables with mean $\lambda$ is the sample mean.
+
+\end{example}
+
+\begin{example}
+    \textbf{Maximum Likelihood Estimator in a Normal Population:}
+Suppose $X_1, \ldots, X_n$ are independent, normal random variables, each with unknown mean $\mu$ and unknown standard deviation $\sigma$. The probability density function (PDF) of a normal distribution is given by:
+
+\[ f(x; \mu, \sigma) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right) \]
+
+Here, $\mu$ represents the mean and $\sigma$ is the standard deviation.
+
+The likelihood function for the sample is the product of the individual PDFs:
+
+\[ L(\mu, \sigma) = \prod_{i=1}^{n} f(x_i; \mu, \sigma) \]
+
+However, it's often more convenient to work with the log-likelihood function:
+
+\[ \ell(\mu, \sigma) = \sum_{i=1}^{n} \left(-\frac{1}{2}\log(2\pi\sigma^2) - \frac{(x_i - \mu)^2}{2\sigma^2}\right) \]
+
+To find the maximum likelihood estimators (MLEs) for $\mu$ and $\sigma$, set the partial derivatives of the log-likelihood with respect to $\mu$ and $\sigma$ equal to zero:
+
+1. For $\mu$:
+
+\[ \frac{\partial \ell}{\partial \mu} = \sum_{i=1}^{n} \frac{(x_i - \mu)}{\sigma^2} = 0 \]
+
+Solving for $\mu$ will give you the MLE for $\mu$.
+
+2. For $\sigma$:
+
+\[ \frac{\partial \ell}{\partial \sigma} = \sum_{i=1}^{n} \left(\frac{(x_i - \mu)^2}{\sigma^3} - \frac{1}{\sigma}\right) = 0 \]
+
+Solving for $\sigma$ will give you the MLE for $\sigma$.
+
+The solutions provide the maximum likelihood estimates for the unknown parameters $\mu$ and $\sigma$ based on the observed data $x_1, x_2, \ldots, x_n$.
+
+\end{example}
 \section{Hypothesis testing: One-population and Two- population}
 Hypothesis testing is a type of statistical inference that is used to determine whether there is enough evidence to support a particular claim about a population parameter. For example, you might hypothesize that the average size of all the marbles in the bag is 1 inch. You would then collect data on the size of a sample of marbles and use a statistical test to determine whether there is enough evidence to reject the hypothesis that the average size is 1 inch.
 
